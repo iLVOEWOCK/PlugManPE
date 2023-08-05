@@ -50,4 +50,4 @@ Contributions to PlugManX are welcome! If you have any improvements, bug fixes, 
 
 ## License
 
-PlugManX is open-source and licensed under the [GPL License](LICENSE).
+PlugManX is open-source and licensed under the [GNU License](LICENSE).
