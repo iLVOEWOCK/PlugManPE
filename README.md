@@ -1,13 +1,13 @@
 # PlugManPE
 
-PlugManX is a simple, easy-to-use plugin that allows server admins to manage plugins directly from the game or console without the need to restart the server. This port is designed for PocketMine-MP servers.
+PlugManPE is a simple, easy-to-use plugin that allows server admins to manage plugins directly from the game or console without the need to restart the server. This port is designed for PocketMine-MP servers.
 
 ## Features
 
 - Enable, disable, load, and unload plugins in real-time without restarting the server.
 - List all installed plugins along with their status (enabled, disabled, loaded, or unloaded).
 - View detailed information about each plugin, including version, author, description, and more.
-- Easily manage your plugins with intuitive commands and an in-game GUI.
+- Easily manage your plugins with intuitive commands and an in-game UI.
 
 ## Installation
 
