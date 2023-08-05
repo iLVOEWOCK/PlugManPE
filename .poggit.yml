@@ -1,0 +1,9 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/iLVOEWOCK/PlugManPE
+build-by-default: true
+branches:
+- main
+projects:
+  PlugManPE:
+    path: "" 
+    icon: "icon.png"
+...
