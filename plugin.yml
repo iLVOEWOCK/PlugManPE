@@ -15,4 +15,4 @@ permissions:
     description: "Allows usage of list command."
   plugmanpe.info:
     default: op
-    description: "
+    description: "Allows you to seek information." 
