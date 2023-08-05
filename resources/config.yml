@@ -1,0 +1,4 @@
+# A list of plugins that we should ignore when doing reload.
+ignored-plugins:
+  - DummyItemsBlocks
+  - DevTools
