@@ -205,17 +205,14 @@ class Utils
         foreach ($plugins as $plugin) {
             if ($plugin instanceof PluginBase) {
                 $config = $plugin->getConfig();
-
-                if ($config instanceof Config) {
                     $config->reload();
                     $pluginName = $plugin->getName();
                     Server::getInstance()->getLogger()->info("Plugin '" . $pluginName . "' has reloaded all configurations.");
                     $hasConfig = true;
                 } else {
-                    if ($showMessages) {
-                        $pluginName = $plugin->getName();
-                        Server::getInstance()->getLogger()->warning("Plugin '$pluginName' does not have a configuration file.");
-                    }
+                if ($showMessages) {
+                    $pluginName = $plugin->getName();
+                    Server::getInstance()->getLogger()->warning("Plugin '$pluginName' does not have a configuration file.");
                 }
             }
         }
