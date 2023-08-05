@@ -12,6 +12,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use woccck\PlugMan\libs\jojoe77777\FormAPI\CustomForm;
 use woccck\PlugMan\libs\jojoe77777\FormAPI\SimpleForm;
+use woccck\PlugMan\PlugManPE;
 
 class Utils
 {
@@ -103,7 +104,7 @@ class Utils
     {
         $configName = ltrim($configName, DIRECTORY_SEPARATOR);
         $dataFolder = Server::getInstance()->getPluginManager()->getPlugin($pluginName)->getDataFolder();
-        $dataFolder = rtrim($dataFolder, DIRECTORY_SEPARATOR);
+        $dataFolder = rtrim($dataFolder, DIRECTORY_SEPARATOR); // Remove trailing directory separator
         $configPath = $dataFolder . DIRECTORY_SEPARATOR . $configName;
 
         if (is_file($configPath)) {
@@ -188,7 +189,7 @@ class Utils
                 $key = trim($parts[0]);
                 $keyWithColon = $key . ':';
                 $defaultValue = isset($parts[1]) ? trim($parts[1]) : '';
-                $form->addInput($keyWithColon, $defaultValue, null, $key . ':'); 
+                $form->addInput($keyWithColon, $defaultValue, null, $key . ':');
             }
         }
 
@@ -202,13 +203,19 @@ class Utils
         $plugins = Server::getInstance()->getPluginManager()->getPlugins();
         $hasConfig = false;
 
+        $config = self::getPlugManConfig();
+        $ignoredPlugins = $config->get("ignored-plugins", []);
+
         foreach ($plugins as $plugin) {
             if ($plugin instanceof PluginBase) {
+                if (in_array($plugin->getName(), $ignoredPlugins, true)) {
+                    continue;
+                }
                 $config = $plugin->getConfig();
-                    $config->reload();
-                    $pluginName = $plugin->getName();
-                    Server::getInstance()->getLogger()->info("Plugin '" . $pluginName . "' has reloaded all configurations.");
-                    $hasConfig = true;
+                $config->reload();
+                $pluginName = $plugin->getName();
+                Server::getInstance()->getLogger()->info("Plugin '" . $pluginName . "' has reloaded all configurations.");
+                $hasConfig = true;
                 } else {
                 if ($showMessages) {
                     $pluginName = $plugin->getName();
@@ -232,6 +239,18 @@ class Utils
             $pluginNames[] = $plugin->getName();
         }
 
-        return implode(", ", $pluginNames);
+        $config = self::getMessagesConfig();
+        $message = $config->get("list.list", "&r&9Plugins: {plugins}");
+        $message = str_replace("{plugins}", implode(TextFormat::WHITE . ", ", $pluginNames), $message);
+
+        return TextFormat::colorize($message);
+    }
+
+    public static function getPlugManConfig() : Config {
+        return new Config(PlugManPE::getInstance()->getDataFolder() . "config.yml", Config::YAML);
+    }
+
+    public static function getMessagesConfig() : Config {
+        return new Config(PlugManPE::getInstance()->getDataFolder() . "messages.yml", Config::YAML);
     }
 }
