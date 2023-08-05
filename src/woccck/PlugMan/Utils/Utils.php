@@ -103,7 +103,7 @@ class Utils
     {
         $configName = ltrim($configName, DIRECTORY_SEPARATOR);
         $dataFolder = Server::getInstance()->getPluginManager()->getPlugin($pluginName)->getDataFolder();
-        $dataFolder = rtrim($dataFolder, DIRECTORY_SEPARATOR); // Remove trailing directory separator
+        $dataFolder = rtrim($dataFolder, DIRECTORY_SEPARATOR);
         $configPath = $dataFolder . DIRECTORY_SEPARATOR . $configName;
 
         if (is_file($configPath)) {
@@ -188,7 +188,7 @@ class Utils
                 $key = trim($parts[0]);
                 $keyWithColon = $key . ':';
                 $defaultValue = isset($parts[1]) ? trim($parts[1]) : '';
-                $form->addInput($keyWithColon, $defaultValue, null, $key . ':', null, null, null, $keyWithColon); // Use $keyWithColon as the element name
+                $form->addInput($keyWithColon, $defaultValue, null, $key . ':'); 
             }
         }
 
