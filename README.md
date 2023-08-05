@@ -46,6 +46,7 @@ Contributions to PlugManPE are welcome! If you have any improvements, bug fixes,
 - [x] messages.yml (maybe)
 - [ ] improve in-game config editor
 - [ ] allow arrays to be properly modified from in-game editor
+- [ ] fix seperator color in `Utils::getAllServerPlugins()`
 
 ## License
 
