@@ -22,13 +22,14 @@ PlugManPE is a simple, easy-to-use plugin that allows server admins to manage pl
 - `/plugman` - Display the main PlugManX command menu.
 - `/plugman list` - List all installed plugins and their status.
 - `/plugman info <plugin>` - View detailed information about a specific plugin.
-- `/plugman enable <plugin>` - Enable a plugin.
-- `/plugman disable <plugin>` - Disable a plugin.
-- `/plugman reload <plugin>` - Load a plugin.
+- `/plugman reload <plugin>` - reload all plugin configurations.
 
 ## Permissions
 
-- `plugmanpe.command` - Required to use all PlugManX commands.
+- `plugmanpe.command` - Required to use base PlugManPE command.
+- `plugmanpe.reload` - Required to use reload all plugin configurations.
+- `plugmanpe.list` - Required to use list plugins command.
+- `plugmanpe.info` - Required to use info plugin command.
 
 ## Support
 
@@ -36,18 +37,14 @@ If you encounter any issues or have questions, feel free to create an issue on t
 
 ## Contributing
 
-Contributions to PlugManX are welcome! If you have any improvements, bug fixes, or new features, please submit a pull request.
+Contributions to PlugManPE are welcome! If you have any improvements, bug fixes, or new features, please submit a pull request.
 
 ## To Do
 
-- [ ] properly create list subcommand
-- [ ] properly create info subcommand
-- [ ] create enable subcommand
-- [ ] create disable subcommand
-
-    
-- [ ] messages.yml (maybe)
+- [x] properly create list subcommand
+- [x] properly create info subcommand
+- [x] messages.yml (maybe)
 
 ## License
 
-PlugManX is open-source and licensed under the [GNU License](LICENSE).
+PlugManPE     is open-source and licensed under the [GNU License](LICENSE).
