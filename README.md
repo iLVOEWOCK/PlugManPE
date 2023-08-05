@@ -44,6 +44,8 @@ Contributions to PlugManPE are welcome! If you have any improvements, bug fixes,
 - [x] properly create list subcommand
 - [x] properly create info subcommand
 - [x] messages.yml (maybe)
+- [ ] improve in-game config editor
+- [ ] allow arrays to be properly modified from in-game editor
 
 ## License
 
