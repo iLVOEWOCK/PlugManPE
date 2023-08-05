@@ -1,0 +1,12 @@
+name: PlugManPE
+main: woccck\PlugMan\PlugManPE
+api: 5.0.0
+version: 1.0.0
+
+permissions:
+  plugmanpe.command:
+    default: op
+  plugmanpe.reload:
+    default: op
+  plugmanpe.list:
+    default: op
