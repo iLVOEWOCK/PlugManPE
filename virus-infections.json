@@ -1,0 +1,16 @@
+{
+  "woccck\\PlugMan\\libs\\jojoe77777\\FormAPI":
+  {
+    "name":"libFormAPI",
+    "author":"jojoe77777",
+    "api":"4.0.0",
+    "version":"2.1.1",
+    "antigen":"jojoe77777\\FormAPI",
+    "build":{"builder":"PoggitCI\/1.0-beta\/beta poggit-virion\/1.0",
+      "builderName":"poggit","buildTime":"2023-05-19T15:23:47+00:00",
+      "poggitBuildId":154811,"buildClass":"Dev","projectId":4250,
+      "projectBuildNumber":4,
+      "fromCommit":"9e11fb396642dcde7a0e6c6da9145d6dde8e8645",
+      "poggitResourceId":207248}
+  }
+}
