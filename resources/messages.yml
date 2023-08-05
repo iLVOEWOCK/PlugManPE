@@ -1,0 +1,23 @@
+# Created By `woccck`
+# Custom Messaging File.
+
+# Messaging can include the '&' character to colorize them.
+# At the header, you can use {plugin} to obtain the plugin name.
+# You can use {plugins} in the list to get all plugins.
+# You can use {authors} in info.authors to get the authors of the plugin.
+# You can use {depend} in info.depend to get the dependencies of the plugin.
+# You can use {soft.depend} in info.softdepend to get the soft dependencies of the plugin.
+
+reload: # Reload messages
+  all: '&r&9All plugins have been reloaded.'
+info: # Information messages
+  header: "&r&7Plugin Information: &a{plugin}"
+  status:
+    enabled: "&r&7- Status: &aenabled"
+    disabled: "&r&7- Status: &4disabled"
+  version: "&r&7- Version: &a{version}"
+  authors: "&r&7- Author(s): &a{authors}"
+  depend: "&r&7- Depends: &a{depend}"
+  softdepend: "&r&7- SoftDepend: &a{soft.depend}"
+list: # List messages
+  list: "&r&9Plugins: {plugins}"
