@@ -1,12 +1,18 @@
 name: PlugManPE
 main: woccck\PlugMan\PlugManPE
 api: 5.0.0
-version: 1.0.0-ALPHA
+version: 1.0.0-BETA
 
 permissions:
   plugmanpe.command:
     default: op
+    description: "Allows usage of the base plugmanpe command."
   plugmanpe.reload:
     default: op
+    description: "Allows usage of reload command."
   plugmanpe.list:
     default: op
+    description: "Allows usage of list command."
+  plugmanpe.info:
+    default: op
+    description: "
