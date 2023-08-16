@@ -31,7 +31,7 @@ class PlugManCommand extends Command implements PluginOwned {
         }
 
         if (empty($args)) {
-            Utils::sendPlugManForm($sender);
+            //Utils::sendPlugManForm($sender);
             return false;
         }
 
@@ -39,7 +39,7 @@ class PlugManCommand extends Command implements PluginOwned {
 
         switch ($subcommand) {
             case "help":
-                $sender->sendMessage(C::GRAY . "--------------------- [" . C::GREEN . " PlugMan " . C::GRAY . "] ---------------------\n" . C::GRAY . "- " . C::GREEN . "/plugman help " . C::WHITE . "- " . C::GRAY . "displays this.\n" . C::GRAY . "- " . C::GREEN . "/plugman " . C::WHITE . "- " . C::GRAY . "Opens configuration editor.\n" . C::GRAY . "- " . C::GREEN . "/plugman list " . C::WHITE . "- " . C::GRAY . "List all plugins.\n" . C::GRAY . "- " . C::GREEN . "/plugman info " . C::WHITE . "- " . C::GRAY . "Gets info on a plugin.\n" . C::GRAY . "- " . C::GREEN . "/plugman reload " . C::WHITE . "- " . C::GRAY . "Reloads all the plugin configurations.\n");
+                $sender->sendMessage(C::GRAY . "--------------------- [" . C::GREEN . " PlugMan " . C::GRAY . "] ---------------------\n" . C::GRAY  . "- " . C::GREEN . "/plugman " . C::WHITE . "- " . C::GRAY . "Base PlugManPE Command.\n" . "- " . C::GREEN . "/plugman help " . C::WHITE . "- " . C::GRAY . "displays this.\n" . C::GRAY . "- " . C::GREEN . "/plugman list " . C::WHITE . "- " . C::GRAY . "List all plugins.\n" . C::GRAY . "- " . C::GREEN . "/plugman info " . C::WHITE . "- " . C::GRAY . "Gets info on a plugin.\n" . C::GRAY . "- " . C::GREEN . "/plugman reload " . C::WHITE . "- " . C::GRAY . "Reloads all the plugin configurations.\n" . C::GRAY . "- " . C::GREEN . "/plugman listpermissions " . C::WHITE . "- " . C::GRAY . "List the permissions of a plugin.\n");
                 break;
             case "list":
                 if ($sender->hasPermission("plugmanpe.list")) {
@@ -108,12 +108,39 @@ class PlugManCommand extends Command implements PluginOwned {
                     Utils::reloadAllConfigurations();
                 }
                 break;
+            case "listpermissions":
+            case "lp":
+                if ($sender->hasPermission("plugmanpe.listperms")) {
+                    if (isset($args[0])) {
+                        $pluginName = $args[0];
+                        $plugin = Server::getInstance()->getPluginManager()->getPlugin($pluginName);
+                        if ($plugin !== null) {
+                            if ($plugin instanceof PluginBase)
+                            $permissions = Utils::getPluginPerms($plugin);
+                            if (empty($permissions)) {
+                                $sender->sendMessage(C::colorize("&r&7Permissions: &cNone"));
+                            } else {
+                                $listPermsMessage = "&r&aPermissions:";
+                                foreach ($permissions as $permission) {
+                                    $permissionString = $permission->getName();
+                                    $listPermsMessage .= "\n- " . $permissionString;
+                                }
+
+                                $sender->sendMessage(C::colorize($listPermsMessage));
+                            }
+                        }
+                    } else {
+                        $sender->sendMessage(C::RED . "Usage: /plugman listpermissions <plugin>");
+                    }
+                }
+                break;
             default:
-                Utils::sendPlugManForm($sender);
+                //Utils::sendPlugManForm($sender);
                 break;
         }
         return true;
     }
+
 
     public function getOwningPlugin(): PlugManPE
     {
