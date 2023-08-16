@@ -10,6 +10,7 @@ use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 use pocketmine\utils\TextFormat as C;
 use woccck\PlugMan\PlugManPE;
+use pocketmine\plugin\PluginBase;
 use woccck\PlugMan\Utils\Utils;
 
 class PlugManCommand extends Command implements PluginOwned {
