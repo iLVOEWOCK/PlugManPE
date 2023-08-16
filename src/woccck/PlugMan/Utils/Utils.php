@@ -246,6 +246,16 @@ class Utils
         return TextFormat::colorize($message);
     }
 
+    public static function getPluginPerms(PluginBase $plugin) : array {
+        $pluginPerms = [];
+        foreach ($plugin->getDescription()->getPermissions() as $default => $perms) {
+            foreach ($perms as $perm) {
+                $pluginPerms[] = $perm;
+            }
+        }
+        return $pluginPerms;
+    }
+    
     public static function getPlugManConfig() : Config {
         return new Config(PlugManPE::getInstance()->getDataFolder() . "config.yml", Config::YAML);
     }
